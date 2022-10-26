@@ -1,6 +1,6 @@
 <template>
-  <section class="main-container main-footer">
-    <div class="flex space-between align-center">
+  <section class="main-container footer-wrapper">
+    <div class="flex space-between align-center main-footer">
       <div class="flex footer-left">
         <span class="logo">Mr-Bitcoin</span>
         <span>© 2022 Mr-Bitcoin</span>
@@ -19,23 +19,48 @@ export default {}
 </script>
 
 <style lang="scss" scoped>
-.main-footer {
-  position: relative;
-  bottom: 0;
-  height: 66px;
-  background-color: rgb(240, 240, 240);
-}
-.footer-left {
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  .logo {
-    color: #0052ff;
-    font-size: 1.7rem;
-    font-weight: bold;
+@import '@/assets/styles/setup/variables.scss';
+
+// .main-footer {
+//   height: 70px;
+//   background-color: $clr7;
+// }
+// .footer-left {
+//   justify-content: center;
+//   align-items: center;
+//   gap: 1rem;
+//   .logo {
+//     color: $clr8;
+//     font-size: 1.5rem;
+//     font-weight: bold;
+//   }
+// }
+// .social-network {
+//   gap: 2em;
+// }
+
+.footer-wrapper {
+  height: 70px;
+  background-color: $clr7;
+
+  .main-footer {
+    font-size: 0.7rem;
+    .footer-left {
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+
+      .logo {
+        color: $clr8;
+        font-size: 1rem;
+        font-weight: bold;
+        padding-right: 5%;
+      }
+    }
+
+    .social-network {
+      gap: 2em;
+    }
   }
-}
-.social-network {
-  gap: 2em;
 }
 </style>

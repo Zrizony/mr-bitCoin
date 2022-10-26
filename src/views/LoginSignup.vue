@@ -1,9 +1,9 @@
 <template>
-  <section class="full login-page-wrapper">
+  <section class="login-page-wrapper">
     <div class="flex login-page">
       <div class="flex login-img">
         <img
-          src="https://res.cloudinary.com/dalkffrhf/image/upload/v1666183905/mr-bitcoin/cryptocurrency_eiz8sa.png"
+          v-bind:src="coins"
           alt=""
         />
       </div>
@@ -13,7 +13,13 @@
           <h1 class="login-title">Welcome Back!</h1>
           <form v-on:submit="onLogin" class="login-form">
             <label for="username" class="login-label">Username</label>
-            <input v-model="username" id="username" type="text" placeholder="Username" required />
+            <input
+              v-model="username"
+              id="username"
+              type="text"
+              placeholder="Username"
+              required
+            />
             <button>Login</button>
           </form>
 
@@ -61,66 +67,60 @@
 </template>
 
 <script>
-import router from '../router';
-import { userService } from '../services/user-service';
+import router from '../router'
+import shortImgsUrl from '@/assets/imgs/imgs.js'
+import { userService } from '../services/user-service'
 
 export default {
   data() {
     return {
-      username: ''
+      username: '',
+      coins: shortImgsUrl.coins,
     }
   },
   methods: {
     async onLogin() {
       const username = this.username
       await userService.login(username)
-      this.$store.dispatch({type: "setUser"})
+      this.$store.dispatch({ type: 'setUser' })
 
       router.push('/')
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/setup/variables.scss';
+
 .login-page-wrapper {
-  // min-height: calc(100vh - 215px);
+  height: calc(100vh - 70px);
   background-image: url('https://res.cloudinary.com/dalkffrhf/image/upload/v1666183736/mr-bitcoin/blur-gradient-background_xxsw4c.webp');
   background-size: cover;
 
   .login-page {
     justify-content: space-between;
     align-items: center;
-    margin: auto;
-    flex-wrap: wrap;
-    height: 100%;
+    flex-direction: column;
     flex: 1;
-    max-width: 1250px;
+    margin: auto;
+    padding: 20px 0;
 
     .login-img {
-      padding: 10px;
+      width: 50%;
       transform: translatey(0px);
       animation: float 6s ease-in-out infinite;
-      flex: 0.5;
     }
 
     .login-modal-wrapper {
-      height: 100%;
-      flex: 0.5;
-      align-items: center;
-      justify-content: center;
-      margin: auto;
 
       .login-modal {
-        box-shadow: 0px 0px 10px 0px #434343;
+        box-shadow: 0px 0px 10px 0px $clr5;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         padding: 20px;
         border-radius: 6px;
-        height: 60%;
-        width: 50%;
-        flex: 0.5;
 
         .login-title {
           font-size: 2rem;
@@ -137,7 +137,7 @@ export default {
           }
 
           input {
-            border: 1px solid rgb(200, 200, 200);
+            border: 1px solid $clr7;
             border-radius: 3px;
             padding: 5px;
             margin: 0 0 10px;
@@ -145,21 +145,21 @@ export default {
 
             &:focus {
               outline: none;
-              border: 1px solid rgb(60, 60, 60);
+              border: 1px solid $clr4;
             }
           }
           button {
             border-radius: 10px;
             padding: 10px;
             max-width: 250px;
-            background-color: rgb(112, 37, 187);
-            color: #ffffff;
+            background-color: $clr6;
+            color: $clr1;
             transition: all 0.3s;
             font-family: inherit;
             margin-bottom: 0;
 
             &:hover {
-              background-color: darken(rgb(112, 37, 187), 20%);
+              background-color: darken($clr6, 20%);
             }
           }
         }
@@ -168,7 +168,7 @@ export default {
           font-weight: 900;
 
           a {
-            color: rgb(130, 130, 225);
+            color: $clr6;
             cursor: pointer;
           }
         }
@@ -179,7 +179,7 @@ export default {
           margin: 5px;
           .divider-line {
             width: 100px;
-            border-top: 1px solid rgb(60, 60, 60);
+            border-top: 1px solid $clr5;
           }
           .divider-text {
             padding: 5px 10px;
@@ -187,7 +187,7 @@ export default {
         }
 
         .google-btn {
-          background-color: #ffffff;
+          background-color: $clr1;
           align-items: center;
           justify-content: center;
           border-radius: 10px;
@@ -204,9 +204,22 @@ export default {
           transition: all 0.3s;
 
           &:hover {
-            box-shadow: 5px 6px 16px -9px rgba(0, 0, 0, 0.75);
+            box-shadow: 5px 6px 16px -9px #0000004b;
           }
         }
+      }
+    }
+  }
+}
+
+@media (min-width: 400px) {
+  .login-page-wrapper {
+    .login-page {
+      flex-direction: row;
+      height: 100%;
+
+      .login-modal-wrapper {
+        margin: auto;
       }
     }
   }

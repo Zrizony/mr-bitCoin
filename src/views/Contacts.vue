@@ -30,7 +30,6 @@
 import ContactsList from '../components/ContactsList.vue'
 import ContactDetails from '../components/ContactDetails.vue'
 import TransferModal from '../components/TransferModal.vue'
-import contact from '../store/modules/contact'
 
 export default {
   data() {
@@ -76,7 +75,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/setup/variables.scss';
+
 .contacts-page-wrapper {
+  height: calc(100vh - 100px);
   flex-direction: column;
   flex: 1;
   background-color: #F9F7F6;
