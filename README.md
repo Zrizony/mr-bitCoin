@@ -13,6 +13,7 @@ made by: Roy Yam and Barak Kaldess
 ## Contact
 
 Roy Yam - [https://www.linkedin.com/in/roy-yam/](https://www.linkedin.com/in/roy-yam/) - royyam99@gmail.com
+<br>
 Barak Kaldess - [Linkedin](https://www.linkedin.com/in/barak-kaldess/) - [Facebook](https://www.facebook.com/barak.kaldess/) - barakkaldess@hotmail.com
 
 
